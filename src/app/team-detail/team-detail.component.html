@@ -1,0 +1,43 @@
+<mat-card>
+    <h3>Descripcion</h3>
+    <div *ngIf="team |async as t">
+        <section>
+            <span>Nombre: {{t.name}}</span>
+            <span>Fecha de creacion: {{t.createdAt | date:'dd/MM/yyyy HH:MM'}}</span>
+        </section>
+
+        <h3>Jugadores</h3>
+
+        <table *ngIf="t.players.length" mat-table [dataSource]="t.players" class="mat-elevation-z8" >
+            <ng-container matColumnDef="_id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> <a [routerLink]="['/players', element._id]">{{element._id}}</a>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.name }}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.email }}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef> Fecha de creacion </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ element.createdAt | date:'dd/MM/yyyy HH:MM' }}
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="['_id', 'name', 'email', 'createdAt']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['_id', 'name', 'email', 'createdAt'];"></tr>
+        </table>
+        <p *ngIf="!t.players.length">No hay Jugadores.</p>
+        <button  mat-raised-button color="warn"  (click)="delete()" type="button">Eliminar grupo</button>
+        <button  mat-raised-button color="primary"  (click)="addPlayer()" type="button">Agregar jugador</button>
+    </div>
+</mat-card>

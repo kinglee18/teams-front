@@ -1,0 +1,13 @@
+<mat-card>
+    <form [formGroup]="form" (submit)="submit()">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input formControlName="name" matInput placeholder="Nombre de jugador">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email de jugador">
+        </mat-form-field>
+        <button [disabled]="!form.valid" mat-raised-button color="primary"  type="submit">Guardar</button>
+    </form>
+</mat-card>

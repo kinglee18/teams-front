@@ -1,0 +1,10 @@
+<mat-card>
+    <form (submit)="submit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input [formControl]="name" matInput placeholder="Nombre del equipo">
+        </mat-form-field>
+
+        <button [disabled]="name.invalid" mat-raised-button color="primary"  type="submit">Registrar</button>
+    </form>
+</mat-card>

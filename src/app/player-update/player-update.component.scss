@@ -1,0 +1,16 @@
+mat-card {
+    width: fit-content;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .buttons {
+        button{
+            margin-right: 5px;
+
+        }
+    }
+}

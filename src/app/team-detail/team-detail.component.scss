@@ -1,0 +1,20 @@
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    border: 1px solid;
+    border-radius: 11px;
+    background: aliceblue;
+}
+
+button{
+    margin-right: 5px;
+}
