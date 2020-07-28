@@ -1,5 +1,6 @@
 <div>
-    <table mat-table [dataSource]="teams" class="mat-elevation-z8">
+    <h2>Tabla de equipos</h2>
+    <table mat-table [dataSource]="teams" class="mat-elevation-z8" *ngIf="(teams | async)?.length">
         <ng-container matColumnDef="_id">
             <th mat-header-cell *matHeaderCellDef> ID </th>
             <td mat-cell *matCellDef="let element"> <a [routerLink]="['/teams', element._id]">{{ element._id }}</a>
@@ -21,6 +22,7 @@
         <tr mat-header-row *matHeaderRowDef="['_id', 'name', 'createdAt']"></tr>
         <tr mat-row *matRowDef="let row; columns: ['_id', 'name', 'createdAt'];"></tr>
     </table>
+    <p *ngIf="(teams | async)?.length==0">No hay equipos.</p>
     
     <button mat-raised-button color="primary" [routerLink]="['teams/create']">Crear equipo</button>
 </div>
